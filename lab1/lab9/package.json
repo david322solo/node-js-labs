@@ -1,0 +1,12 @@
+{
+  "name": "9",
+  "version": "0.0.0",
+  "description": "9",
+  "main": "server.js",
+  "author": {
+    "name": ""
+  },
+  "dependencies": {
+    "xml2js": "latest"
+  }
+}
