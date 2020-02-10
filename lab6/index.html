@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>sendMail</title>
+</head>
+<body>
+<input placeholder="from" type="text" id="from">
+<input placeholder="to" type="text" id="to">
+<input  placeholder="text" type="text" id="text">
+<button onclick="Send()">Send message</button>
+<br>
+<input type="text" id="m0603">
+<button onclick="SendSecond()">sendsecond</button>
+</body>
+<script>
+    function Send() {
+        let from = document.getElementById('from').value;
+        let to = document.getElementById('to').value;
+        let text = document.getElementById('text').value;
+        fetch('http://localhost:3000/send', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+            body: JSON.stringify({from:from,to:to, subject:'test', html:text})
+        }).then(response => {
+                console.log('file sent');
+            })
+    }
+    function SendSecond() {
+        let text = document.getElementById('m0603').value;
+        fetch('http://localhost:3000/sendm0603', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+            body: JSON.stringify({text:text})
+        }).then(response => {
+            console.log('file sent');
+        })
+
+    }
+</script>
+</html>

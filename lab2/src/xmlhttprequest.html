@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>xmlhttprequest</title>
+</head>
+<body onload="getText()">
+<div></div>
+<script>
+   function getText(){
+       let xml = new XMLHttpRequest();
+       xml.open('GET', 'http://localhost:5000/api/name',true);
+        xml.onreadystatechange = ()=>{
+            if(xml.readyState===4 && xml.status===200){
+                document.getElementsByTagName('div')[0].innerHTML+=xml.responseText;
+            } else {
+                console.log(xml.status);
+            }
+        };
+        xml.send(null);
+   }
+</script>
+</body>
+</html>

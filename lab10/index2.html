@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<button onclick="startWSbroadcast()">start WSbroadcast</button>
+<h1>Received:</h1>
+<div id="resBroad"></div>
+<br><br>
+<h1>Sent:</h1>
+<div id="reqBroad"></div>
+<script>
+    function startWSbroadcast() {
+        let wsB = new WebSocket('ws://localhost:5000/');
+        wsB.onopen = function(){
+            wsB.send("client");
+            let r = document.getElementById('reqBroad');
+            r.innerHTML += 'client' +'<br>';
+            console.log('connection')
+        };
+        wsB.onmessage = function(message) {
+            let r = document.getElementById('resBroad');
+            r.innerHTML += message.data +'<br>';
+        };
+    }
+</script>
+</body>
+</html>

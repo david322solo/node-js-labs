@@ -1,0 +1,15 @@
+{
+  "name": "m0603smelov",
+  "version": "1.2.4",
+  "dependencies": {
+    "nodemailer": "latest"
+  },
+  "description": "project m 0.0.6",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "artem",
+  "license": "ISC"
+}

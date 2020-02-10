@@ -1,0 +1,8 @@
+{
+  "name": "lab08",
+  "version": "1.0.0",
+  "dependencies": {
+    "xml2js": "latest",
+    "multiparty": "latest"
+  }
+}

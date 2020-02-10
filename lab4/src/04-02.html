@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>person</title>
+</head>
+<body onload="getPerson()">
+    <div id="get_result">
+    </div>
+    <div id="post_result">
+        <input type="number" id="ID" placeholder="id">
+        <input type="text" id="NAME" placeholder="name">
+        <input type="text" id="BDAY" placeholder="birthday">
+        <input type="submit" onclick="postPerson()">
+    </div>
+    <input type="number" id="idDelete" placeholder="id delete">
+<button onclick="deleteT()">delete</button>
+    <input type="number" id="idPut" placeholder="id put">
+    <input type="text" id="namePut" placeholder="name">
+    <input type="text" id="bdayPut" placeholder="birthday">
+    <button onclick="put()">put</button>
+</body>
+<script>
+    function put() {
+        let id = document.getElementById('idPut').value;
+        let name = document.getElementById('namePut').value;
+        let bday = document.getElementById('bdayPut').value;
+        fetch('http://localhost:5003/api/db',{
+            method: 'PUT',
+            headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+            body: JSON.stringify({id: parseInt(id), name: name, bday: bday})
+        }).then(()=>{getPerson();});
+    }
+    function postPerson() {
+        let id = document.getElementById('ID').value;
+        let name = document.getElementById('NAME').value;
+        let bday = document.getElementById('BDAY').value;
+            fetch('http://localhost:5003/api/db', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
+                body: JSON.stringify({id: parseInt(id), name: name, bday: bday})
+            })
+                .then(response => {
+                    return response.json();
+                })
+                .then(() => {
+                    getPerson();
+                });
+    }
+    function deleteT(){
+        let id = document.getElementById('idDelete').value;
+        fetch('http://localhost:5003/api/db',{
+            method:'DELETE',
+            headers:{'Content-Type':'application/json','Accept': 'application/json'},
+            body: JSON.stringify({id:parseInt(id)})
+
+        }).then(()=>getPerson());
+    }
+
+    function getPerson() {
+
+        fetch('http://localhost:5003/api/db',{method:'GET'})
+            .then(resp=>resp.json())
+            .then(resp=>{
+                    let getElement = document.getElementById('get_result');
+                    getElement.innerHTML='';
+                    resp.forEach(el=>{getElement.innerHTML+='<div id='+(el.id)+'>'+ el.id +'. ' + el.name + ' ' + el.bday+ '<br>'});
+                });
+
+
+    }
+</script>
+</html>
