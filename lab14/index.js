@@ -5,7 +5,7 @@ const sql = require('mssql/msnodesqlv8');
 //let dbreq01 = (parm)=>{new sql.Request().query(`select * from {parm}`,processing_result)};
 let config = {
     driver: 'msnodesqlv8',
-    connectionString:'Driver={SQL Server Native Client 11.0};Server={DESKTOP-BVQAVK6};Database={student};Trusted_Connection={yes};'
+    connectionString:'Driver={SQL Server Native Client 11.0};Server={DESKTOP-S21UQE4};Database={student};Trusted_Connection={yes};'
 };
 // sql.connect(config,err=>{
 //     if(err) console.log(err.message);

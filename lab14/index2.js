@@ -4,7 +4,7 @@ const FILE_NAME = '/10.sql';
 const sql = require('mssql/msnodesqlv8');
 let config = {
     driver: 'msnodesqlv8',
-    connectionString:'Driver={SQL Server Native Client 11.0};Server={DESKTOP-BVQAVK6};Database={student};Trusted_Connection={yes};'
+    connectionString:'Driver={SQL Server Native Client 11.0};Server={DESKTOP-S21UQE4};Database={student};Trusted_Connection={yes};'
 };
 let processing_result = (err,result) =>{
     if(err) console.log('error',err.code,err.originalError.info.message);
